@@ -1,6 +1,6 @@
 package RTTI;
 
-public class Implementation implements SomeMethods{
+public class Implementation implements SomeMethods {
     @Override
     public void boring1() {
         System.out.println("boring1");
@@ -13,7 +13,7 @@ public class Implementation implements SomeMethods{
 
     @Override
     public void interesting(String arg) {
-        System.out.println("interesting"+arg);
+        System.out.println("interesting" + arg);
     }
 
     @Override
