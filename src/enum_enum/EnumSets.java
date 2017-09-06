@@ -6,6 +6,7 @@ import static enum_enum.AlarmPoints.*;
 
 //引入EnumSet,是为了通过enum创造一种替代品，以替代传统的基于int的位标志，这种标志可以用来表达某种开/关信息
 //EnumSet基于long
+//向EnumSet添加enum实例的顺序并不重要，因为其输出的次序决定于enum实例定义时的次序
 public class EnumSets {
     public static void main(String[] args) {
         EnumSet<AlarmPoints> points = EnumSet.noneOf(AlarmPoints.class);//空集合
