@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--plane.xsd
+    plane.xml的架构文件-->
+<!--架构本身是使用来自一个名称空间的一个标签集合或词汇表写成的，该名称空间就是所谓的架构的架构，即http://www.w3.org/2001/XMLSchema-->
+<!--每个架构都用schema作为根元素，schema元素为架构的架构指定名称空间，架构的元素和特性都从这个架构引入，并且通常会为架构中的名称制定一个前缀，比如xsd-->
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://cs.uccs.edu/planeSchema"
+        xmlns="http://cs.uccs.edu/planeSchema"
+        elementFormDeafault="qualified">
+    <!--复杂类型,可以带有特性，并能包含其他数据类型的元素作为子元素-->
+    <xsd:element name="planes">
+        <xsd:all>
+            <xsd:element name="make"
+                         type="xsd:string"
+                         minOccurs="1"
+                         maxOccurs="unbounded"/>
+        </xsd:all>
+    </xsd:element>
+
+    <!--简单类型，内容被限定为字符串，不能带有特性也不能包含嵌套元素-->
+    <xsd:simpleType name="firstName">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
