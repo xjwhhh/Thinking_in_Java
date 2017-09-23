@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!--定义前缀：大多数URL太长了，每次都为一个名称输入URL显然过于繁琐；URL中包含了XML中的非法字符，声明名称空间的元素通常是文档的根元素-->
+    <!--在任何名称空间声明中，通过省略前缀可以将其中一个名称空间指定为默认的名称空间-->
+    <states
+            xmlns="http://www.states-info.org/state"
+            xmlns:cap="http://www.states-info.org/state-capitals">
+        <state>
+            <name>South Dakota</name>
+            <population>754844</population>
+            <capital>
+                <cap:name>Pierre</cap:name>
+                <cap:population>12429</cap:population>
+            </capital>
+        </state>
+        <!--More states-->
+    </states>
+
+    <!--注意特性的名称不包含在名称空间里，因为特性的名称隶属于元素，所以一个标签集可以在多个元素中使用相同的特性名称而不会产生歧义-->
+</root>

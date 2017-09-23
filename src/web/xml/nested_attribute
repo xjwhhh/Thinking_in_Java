@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!--An element with one attribute-->
+    <patient name="Maggie Dee Magpie">
+    </patient>
+
+    <!--An element with one nested element-->
+    <patient>
+        <name>Maggie Dee Magpie</name>
+    </patient>
+
+    <!--An element with one nested element,which contains three nested elements-->
+    <patient>
+        <name>
+            <first>Maggie</first>
+            <middle>Dee</middle>
+            <last>Magpie</last>
+        </name>
+    </patient>
+
+    <!--添加新特性或者定义一个嵌套元素，要根据情况做出选择-->
+
+</root>

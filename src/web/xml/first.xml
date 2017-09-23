@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--xml声明-->
+<ad><!--xml根元素-->
+    <year>1960</year>
+    <make>Cessna</make>
+    <model>Centurian</model>
+    <color>Yellow with white trim</color>
+    <location>
+        <city>Gulfport</city>
+        <state>Mississippi</state>
+    </location>
+</ad>
