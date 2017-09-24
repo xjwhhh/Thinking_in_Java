@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<?xml-stylesheet type="text/css" herf="planes.css"?>
+<!--实例空间的默认名称空间一般使用在它的架构中定义的名称空间-->
+<!--实力空间的schemaLocation特性用来为实例的标准名称空间命名，包括名称XMLSchema-instance，这个名称空间与用于架构的XMLSchema名称空间是对应的-->
+<!--实例文档必须指定在其中定义默认名称空间的架构的文件名，这是通过schema-Location特性来完成的，该特性有两个值，架构的名称空间和架构的文件名，这个特性在XMLSchema-instance名称空间中定义，所以必须使用正确的前缀-->
 <planes
         xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:xsi="http://cs.uccs.edu/planeSchema"
-        xsi:schemaLocation="http://cs.uccs.edu/planeSchema/planes.xsd">
+        xsi:schemaLocation="planes.xsd">
     <make>Cessna</make>
     <make>Piper</make>
     <make>Beechcraft</make>
+
+    <ad>
+        <year>1997</year>
+        <make>Cessna</make>
+        <model>Skyhawk</model>
+        <color>LightBlue and white</color>
+    </ad>
 </planes>

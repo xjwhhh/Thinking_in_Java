@@ -3,6 +3,9 @@
     plane.xml的架构文件-->
 <!--架构本身是使用来自一个名称空间的一个标签集合或词汇表写成的，该名称空间就是所谓的架构的架构，即http://www.w3.org/2001/XMLSchema-->
 <!--每个架构都用schema作为根元素，schema元素为架构的架构指定名称空间，架构的元素和特性都从这个架构引入，并且通常会为架构中的名称制定一个前缀，比如xsd-->
+<!--架构定义名称空间，由架构定义的名称空间的名称必须用scehma元素的targetNamespace特性来指定。一个架构中的每个顶级(没有被嵌套的)元素都把他的名称放在目标名称空间里-->
+<!--如果想把没有在schema元素中直接定义的元素和特性（因为他们嵌套在顶级元素里）的名称添加到名称目标空间里，则必须将架构的elementFormDefault设置为qualified-->
+<!--作为架构中不加前缀的名称来源的默认名称空间由另一个xmlns来制定，但这次不指定前缀-->
 <xsd:schema
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://cs.uccs.edu/planeSchema"
@@ -19,9 +22,33 @@
     </xsd:element>
 
     <!--简单类型，内容被限定为字符串，不能带有特性也不能包含嵌套元素-->
+    <!--简单的用户自定义类型在SimpleType元素中使用约束面来描述，约束面必须在restriction元素的内容中指定，该元素指定基类型的名称-->
+    <!--声明了一个用户自定义的类型——firstName，它的字符串少于11个字符-->
+    <!--length约束面用来限制字符串由限定字符组成，minLength面用来指定最小长度，十进制数的数字个数由precision约束面的value属性来限制-->
     <xsd:simpleType name="firstName">
         <xsd:restriction base="xsd:string">
             <xsd:maxLength value="10"/>
         </xsd:restriction>
     </xsd:simpleType>
+
+    <xsd:element name="year">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+                <xsd:minInclusive value="1900"/>
+                <xsd:maxInclusive value="2017"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <!--在year元素定义为全局元素的前提下，sports_car元素的定义中可以在ref特性中包含对year的引用-->
+    <xsd:complexType name="sports_car">
+        <xsd:sequence>
+            <xsd:element name="make" type="xsd:string"/>
+            <xsd:element name="model" type="xsd:string"/>
+            <xsd:element name="engine" type="xsd:string"/>
+            <xsd:element ref="year"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
 </xsd:schema>
