@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popcorn Sales Form (Ajax)</title>
+    <script type="text/javascript" src="http://o.aolcdn.com/dojo/0.4.2/dojo.js">
+    </script>
+    <style type="text/css">
+        <!--
+        元素对应的css-- >
+        input.name {
+            position: absolute;
+            left: 120px;
+        }
+
+        input.address {
+            position: absolute;
+            left: 120px;
+        }
+
+        input.zip {
+            position: absolute;
+            left: 120px;
+        }
+
+        input.city {
+            position: absolute;
+            left: 120px;
+        }
+
+        input.state {
+            position: absolute;
+            left: 120px;
+        }
+
+        img {
+            position: absolute;
+            left: 400px;
+            top: 50px;
+        }
+    </style>
+    <script type="text/javascript" src="popcornA.js">
+    </script>
+</head>
+<body>
+<h2>Welcome to Millennium Gymnastics Booster Club Popcorn Sales</h2>
+<from action="">
+    <p>
+        Buyer's Name:
+        <input class="name" type="text" name="name" size="30"/>
+    </p>
+    <p>
+        Street Address:
+        <input class="address" type="text" name="street" size="30"/>
+    </p>
+    <p>
+        Zip Code:
+        <input class="zip" type="text" name="zip" size="10" onblur="getPlace(this.value)"/>
+    </p>
+    <p>
+        City:
+        <input class="city" type="text" name="city" id="city" size="30"/>
+    </p>
+    <p>
+        State:
+        <input class="state" type="text" name="state" id="state" size="30"/>
+    </p>
+    <img src="shiki.jpg" alt="picture of shiki" width="150" height="150"/>
+
+    <p>
+        <input type="submit" value="Submit Order"/>
+        <input type="reset" value="Clear Order Form"/>
+    </p>
+
+</from>
+
+</body>
+</html>
