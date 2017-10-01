@@ -27,7 +27,6 @@
 <!--复选框和单选按钮用于让用户从一系列预设置的选项中进行选择。
 当创建表单时，如果您想让用户从列表中选择若干个选项时，请使用 checkbox。如果您限制用户只能选择一个选项，请使用 radio。
 对一系列复选框和单选框使用 .checkbox-inline 或 .radio-inline class，控制它们显示在同一行上。-->
-
 <label for="name">默认的复选框和单选按钮的实例</label>
 <div class="checkbox">
     <label><input type="checkbox" value="">选项 1</label></div>
@@ -56,6 +55,167 @@
     <label class="checkbox-inline">
         <input type="radio" name="optionsRadiosinline" id="optionsRadios4"
                value="option2"> 选项 2 </label></div>
+
+<!--当您想让用户从多个选项中进行选择，但是默认情况下只能选择一个选项时，则使用选择框。
+使用 <select> 展示列表选项，通常是那些用户很熟悉的选择列表，比如州或者数字。
+使用 multiple="multiple" 允许用户选择多个选项。-->
+<form role="form">
+    <div class="form-group">
+        <label for="name">选择列表</label>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="name">可多选的选择列表</label>
+        <select multiple class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+</form>
+
+<!--当您需要在一个水平表单内的表单标签后放置纯文本时，请在 <p> 上使用 class .form-control-static。-->
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">email@example.com</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword"
+                   placeholder="请输入密码">
+        </div>
+    </div>
+</form>
+<!--表单控件状态
+除了 :focus 状态（即，用户点击 input 或使用 tab 键聚焦到 input 上），Bootstrap 还为禁用的输入框定义了样式，并提供了表单验证的 class。
+输入框焦点
+当输入框 input 接收到 :focus 时，输入框的轮廓会被移除，同时应用 box-shadow。
+禁用的输入框 input
+如果您想要禁用一个输入框 input，只需要简单地添加 disabled 属性，这不仅会禁用输入框，还会改变输入框的样式以及当鼠标的指针悬停在元素上时鼠标指针的样式。
+禁用的字段集 fieldset
+对 <fieldset> 添加 disabled 属性来禁用 <fieldset> 内的所有控件。-->
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">聚焦</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="focusedInput" type="text"
+                   value="该输入框获得焦点...">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">
+            禁用 </label>
+        <div class="col-sm-10">
+            <input class="form-control" id="disabledInput" type="text"
+                   placeholder="该输入框禁止输入..." disabled>
+        </div>
+    </div>
+    <fieldset disabled>
+        <div class="form-group">
+            <label for="disabledTextInput" class="col-sm-2 control-label">
+                禁用输入（Fieldset disabled） </label>
+            <div class="col-sm-10">
+                <input type="text" id="disabledTextInput" class="form-control"
+                       placeholder="禁止输入">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="disabledSelect" class="col-sm-2 control-label">
+                禁用选择菜单（Fieldset disabled） </label>
+            <div class="col-sm-10">
+                <select id="disabledSelect" class="form-control">
+                    <option>禁止选择</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group has-success">
+        <label class="col-sm-2 control-label" for="inputSuccess">
+            输入成功 </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputSuccess">
+        </div>
+    </div>
+    <div class="form-group has-warning">
+        <label class="col-sm-2 control-label" for="inputWarning">
+            输入警告 </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputWarning">
+        </div>
+    </div>
+    <div class="form-group has-error">
+        <label class="col-sm-2 control-label" for="inputError">
+            输入错误 </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputError">
+        </div>
+    </div>
+</form>
+
+<!--使用 class .input-lg 和 .col-lg-* 来设置表单的高度和宽度-->
+<form role="form">
+    <div class="form-group">
+        <input class="form-control input-lg" type="text"
+               placeholder=".input-lg">
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="text" placeholder="默认输入">
+    </div>
+
+    <div class="form-group">
+        <input class="form-control input-sm" type="text"
+               placeholder=".input-sm">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+        <select class="form-control input-lg">
+            <option value="">.input-lg</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="form-control">
+            <option value="">默认选择</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="form-control input-sm">
+            <option value="">.input-sm</option>
+        </select>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder=".col-lg-2">
+        </div>
+        <div class="col-lg-3">
+            <input type="text" class="form-control" placeholder=".col-lg-3">
+        </div>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" placeholder=".col-lg-4">
+        </div>
+    </div>
+</form>
+
+<!--Bootstrap 表单控件可以在输入框 input 上有一个块级帮助文本。
+为了添加一个占用整个宽度的内容块，请在 <input> 后使用 .help-block。-->
+<form role="form">
+    <span>帮助文本实例</span>
+    <input class="form-control" type="text" placeholder="">
+    <span class="help-block">一个较长的帮助文本块，超过一行，
+   需要扩展到下一行。本实例中的帮助文本总共有两行。</span></form>
 
 
 </body>
