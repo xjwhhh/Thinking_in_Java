@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 按钮选项</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- 标准的按钮 -->
+<button type="button" class="btn btn-default">默认按钮</button>
+<!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+<button type="button" class="btn btn-primary">原始按钮</button>
+<!-- 表示一个成功的或积极的动作 -->
+<button type="button" class="btn btn-success">成功按钮</button>
+<!-- 信息警告消息的上下文按钮 -->
+<button type="button" class="btn btn-info">信息按钮</button>
+<!-- 表示应谨慎采取的动作 -->
+<button type="button" class="btn btn-warning">警告按钮</button>
+<!-- 表示一个危险的或潜在的负面动作 -->
+<button type="button" class="btn btn-danger">危险按钮</button>
+<!-- 并不强调是一个按钮，看起来像一个链接，但同时保持按钮的行为 -->
+<button type="button" class="btn btn-link">链接按钮</button>
+
+<p>
+    <button type="button" class="btn btn-primary btn-lg">
+        大的原始按钮
+    </button>
+    <button type="button" class="btn btn-default btn-lg">
+        大的按钮
+    </button>
+</p>
+<p>
+    <button type="button" class="btn btn-primary">
+        默认大小的原始按钮
+    </button>
+    <button type="button" class="btn btn-default">
+        默认大小的按钮
+    </button>
+</p>
+<p>
+    <button type="button" class="btn btn-primary btn-sm">
+        小的原始按钮
+    </button>
+    <button type="button" class="btn btn-default btn-sm">
+        小的按钮
+    </button>
+</p>
+<p>
+    <button type="button" class="btn btn-primary btn-xs">
+        特别小的原始按钮
+    </button>
+    <button type="button" class="btn btn-default btn-xs">
+        特别小的按钮
+    </button>
+</p>
+<p>
+    <button type="button" class="btn btn-primary btn-lg btn-block">
+        块级的原始按钮
+    </button>
+    <button type="button" class="btn btn-default btn-lg btn-block">
+        块级的按钮
+    </button>
+</p>
+
+<!--
+按钮元素
+添加 .active class 来显示它是激活的。
+锚元素
+添加 .active class 到 <a> 按钮来显示它是激活的。-->
+<p>
+    <button type="button" class="btn btn-default btn-lg ">
+        默认按钮
+    </button>
+    <button type="button" class="btn btn-default btn-lg active">
+        激活按钮
+    </button>
+</p>
+<p>
+    <button type="button" class="btn btn-primary btn-lg ">
+        原始按钮
+    </button>
+    <button type="button" class="btn btn-primary btn-lg active">
+        激活的原始按钮
+    </button>
+</p>
+
+<!--
+按钮元素
+添加 disabled 属性 到 <button> 按钮。
+锚元素
+添加 disabled class 到 <a> 按钮。
+注意：该 class 只会改变 <a> 的外观，不会改变它的功能。在这里，您需要使用自定义的 JavaScript 来禁用链接。-->
+<p>
+    <button type="button" class="btn btn-default btn-lg">
+        默认按钮
+    </button>
+    <button type="button" class="btn btn-default btn-lg" disabled="disabled">
+        禁用按钮
+    </button>
+</p>
+<p>
+    <button type="button" class="btn btn-primary btn-lg ">
+        原始按钮
+    </button>
+    <button type="button" class="btn btn-primary btn-lg" disabled="disabled">
+        禁用的原始按钮
+    </button>
+</p>
+<p>
+    <a href="#" class="btn btn-default btn-lg" role="button">
+        链接 </a>
+    <a href="#" class="btn btn-default btn-lg disabled" role="button">
+        禁用链接 </a></p>
+<p>
+    <a href="#" class="btn btn-primary btn-lg" role="button">
+        原始链接 </a>
+    <a href="#" class="btn btn-primary btn-lg disabled" role="button">
+        禁用的原始链接 </a>
+    <button type="button" class="btn btn-link btn-lg" disabled="disabled">链接按钮</button>
+</p>
+
+<!--您可以在 <a>、<button> 或 <input> 元素上使用按钮 class。但是建议您在 <button> 元素上使用按钮 class，避免跨浏览器的不一致性问题。-->
+<a class="btn btn-default" href="#" role="button">链接</a>
+<button class="btn btn-default" type="submit">按钮</button>
+<input class="btn btn-default" type="button" value="输入">
+<input class="btn btn-default" type="submit" value="提交">
+
+</body>
+</html>
