@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p>标签式的导航菜单</p>
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#">Home</a>
+    </li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">IOS</a></li>
+    <li><a href="#">VB.NET</a></li>
+    <li><a href="#">JAVA</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+<p>基本的胶囊式导航菜单</p>
+<ul class="nav nav-pills">
+    <li class="active">
+        <a href="#">Home</a>
+    </li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">IOS</a></li>
+    <li><a href="#">VB.NET</a></li>
+    <li><a href="#">JAVA</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+<p>垂直的胶囊式导航菜单</p>
+<ul class="nav nav-pills nav-stacked">
+    <li class="active">
+        <a href="#">Home</a>
+    </li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">IOS</a></li>
+    <li><a href="#">VB.NET</a></li>
+    <li><a href="#">JAVA</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+<p>两端对齐的导航菜单</p>
+<ul class="nav nav-pills nav-justified">
+    <li class="active">
+        <a href="#">Home</a>
+    </li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">IOS</a></li>
+    <li><a href="#">VB.NET</a></li>
+    <li><a href="#">JAVA</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+
+<!--该 class 只会改变 <a> 的外观，不会改变它的功能。在这里，您需要使用自定义的 JavaScript 来禁用链接。-->
+<p>禁用连接</p>
+<ul class="nav nav-pills">
+    <li class="active">
+        <a href="#">Home</a>
+    </li>
+    <li><a href="#">SVN</a></li>
+    <li class="disabled"><a href="#">IOS</a></li>
+    <li><a href="#">VB.NET</a></li>
+    <li><a href="#">JAVA</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+
+<!--以一个带有 class .nav 的无序列表开始。
+添加 class .nav-tabs。
+添加带有 .dropdown-menu class 的无序列表。-->
+<p>带有下拉菜单的标签</p>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">iOS</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Java <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Swing</a></li>
+            <li><a href="#">jMeter</a></li>
+            <li><a href="#">EJB</a></li>
+            <li class="divider"></li>
+            <li><a href="#">分离的链接</a></li>
+        </ul>
+    </li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+</body>
+</html>
