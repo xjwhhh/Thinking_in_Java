@@ -8,6 +8,8 @@ public class Recruitment {
     private String jobRequirement;
     private String workAddress;
     private String treatment;
+    private String jobType;
+    private String publishDate;
 
     public String getCompanyIntroduction() {
         return companyIntroduction;
@@ -65,4 +67,19 @@ public class Recruitment {
         this.treatment = treatment;
     }
 
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
+    }
+
+    public String getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(String publishDate) {
+        this.publishDate = publishDate;
+    }
 }
