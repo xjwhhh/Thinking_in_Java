@@ -1,0 +1,9 @@
+x=100;
+m=x;
+r=x+1;
+while 0<r-m do
+  r=m;
+  a=x/m;
+  m=m+a;
+  m=m/2;
+end
