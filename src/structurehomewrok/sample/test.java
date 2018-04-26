@@ -2,7 +2,7 @@
 //
 //import cn.edu.nju.sklnst.whilex.*;
 //
-//public class test {
+//public class Main {
 //    public static void main(String[] args) {
 //        for (String name : args) {
 //            Node result = Node.readNode(name);
