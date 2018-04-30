@@ -1,30 +1,8 @@
 package VTChallange;
-import sun.misc.BASE64Encoder;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-public class Feature {
-
-    static BASE64Encoder encoder = new sun.misc.BASE64Encoder();
-
-    static String getImageBinary() {
-        File f = new File("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png");
-        BufferedImage bi;
-        try {
-            bi = ImageIO.read(f);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bi, "png", baos);  //经测试转换的图片是格式这里就什么格式，否则会失真
-            byte[] bytes = baos.toByteArray();
-
-            return encoder.encodeBuffer(bytes).trim();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+public class OCR {
 
     public static DataOutputStream readFileByBytes(String fileName, DataOutputStream outputStream)  {
         try {
@@ -49,7 +27,7 @@ public class Feature {
         try {
 
             //API endpoint for API sandbox
-            String url = "https://sandbox.api.sap.com/ml/featureextraction/inference_sync";
+            String url = "https://sandbox.api.sap.com/ml/ocr/ocr";
 
 
             URL urlObj = new URL(url);
@@ -58,25 +36,20 @@ public class Feature {
             connection.setRequestMethod("POST");
 
             //adding headers
-            connection.setRequestProperty("Content-Type","multipart/form-data; boundary=---011000010111000001101001");
+            connection.setRequestProperty("content-type","multipart/form-data; boundary=---011000010111000001101001");
             connection.setRequestProperty("Accept","application/json");
             //API Key for API Sandbox
-            connection.setRequestProperty("APIKey","GLnnEt6i25UHue0Uxx35GNybe0eHU5vB");
+            connection.setRequestProperty("APIKey","KuOLPsQSA01teDWPT9xdHkWOrnMkEi1y");
 
 
             connection.setDoInput(true);
 
             //sending POST request
             connection.setDoOutput(true);
-
-            // Optional Multipart/Form-data parameters: "files"
-            // For more details, see the API definition
-
-            String content=getImageBinary();
             dataOut = new DataOutputStream(connection.getOutputStream());
             dataOut.writeBytes("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"files\"; filename=\"C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png\"\r\nContent-Type: image/png\r\n\r\n");
             dataOut=readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png",dataOut);
-            dataOut.writeBytes("\r\n-----011000010111000001101001--");
+            dataOut.writeBytes("\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"options\"\r\n\r\n"+"{\"lang\": \"en,de\", \"output_type\": \"txt\", \"page_seg_mode\": \"1\", \"model_type\": \"lstm_standard\"} "+"\r\n-----011000010111000001101001--");
             dataOut.flush();
 
             int responseCode = connection.getResponseCode();
