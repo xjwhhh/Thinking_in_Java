@@ -1,4 +1,4 @@
-package tencenttest;
+package bishi.tencenttest;
 
 import java.util.Scanner;
 

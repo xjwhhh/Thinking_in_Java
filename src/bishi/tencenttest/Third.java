@@ -1,4 +1,4 @@
-package tencenttest;
+package bishi.tencenttest;
 
 import java.util.ArrayList;
 import java.util.List;

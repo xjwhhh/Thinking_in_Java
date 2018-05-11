@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-    <!--An element with one attribute-->
+    <!--An element with Main1 attribute-->
     <patient name="Maggie Dee Magpie">
     </patient>
 
-    <!--An element with one nested element-->
+    <!--An element with Main1 nested element-->
     <patient>
         <name>Maggie Dee Magpie</name>
     </patient>
 
-    <!--An element with one nested element,which contains three nested elements-->
+    <!--An element with Main1 nested element,which contains three nested elements-->
     <patient>
         <name>
             <first>Maggie</first>
