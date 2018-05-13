@@ -27,7 +27,7 @@ public class OCR {
         try {
 
             //API endpoint for API sandbox
-            String url = "https://sandbox.api.sap.com/ml/ocr/ocr/jobs";
+            String url = "https://sandbox.api.sap.com/ml/ocr/ocr";
 
 
             URL urlObj = new URL(url);
