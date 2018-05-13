@@ -8,23 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 public class Feature {
 
-    static BASE64Encoder encoder = new sun.misc.BASE64Encoder();
 
-    static String getImageBinary() {
-        File f = new File("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png");
-        BufferedImage bi;
-        try {
-            bi = ImageIO.read(f);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bi, "png", baos);  //经测试转换的图片是格式这里就什么格式，否则会失真
-            byte[] bytes = baos.toByteArray();
-
-            return encoder.encodeBuffer(bytes).trim();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public static DataOutputStream readFileByBytes(String fileName, DataOutputStream outputStream)  {
         try {
@@ -72,7 +56,7 @@ public class Feature {
             // Optional Multipart/Form-data parameters: "files"
             // For more details, see the API definition
 
-            String content=getImageBinary();
+//            String content=getImageBinary();
             dataOut = new DataOutputStream(connection.getOutputStream());
             dataOut.writeBytes("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"files\"; filename=\"C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png\"\r\nContent-Type: image/png\r\n\r\n");
             dataOut=readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png",dataOut);

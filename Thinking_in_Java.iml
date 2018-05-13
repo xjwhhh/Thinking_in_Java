@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://C:/Apache Software Foundation/Tomcat 9.0/lib/servlet-api.jar!/" />
@@ -42,17 +42,6 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/哈哈哈/软件系统设计/2017课件/Visitor模式样例-20171214/sklnst.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Desktop/哈哈哈/软件系统设计/2017课件/Visitor模式样例-20171214/sklnst.jar!/" />
-        </SOURCES>
       </library>
     </orderEntry>
   </component>

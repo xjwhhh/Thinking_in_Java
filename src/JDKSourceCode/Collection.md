@@ -60,7 +60,7 @@
 将集合中所有元素删除
 
     boolean equals(Object o);
-程序员如果写直接继承Collcetion类的类，即没有继承List或者Set，必须考虑要不要重写equals方法，因为有时的实现要求比较值，有时要比较引用
+程序员如果写直接继承Collection类的类，即没有继承List或者Set，必须考虑要不要重写equals方法，因为有时的实现要求比较值，有时要比较引用
 
 只有list才能与list相等，也只有set才能与set相等，这也说明了没有一个类可以既实现list接口，又实现set接口
 
