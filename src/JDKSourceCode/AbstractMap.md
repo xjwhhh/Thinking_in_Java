@@ -5,12 +5,6 @@
 如果要实现一个不可修改的map，只需要继承此类并实现entrySet方法。这个set不支持add,remove,它的迭代器也不支持remove
 
 如果要实现一个可修改的map，还要额外重写这个类的put，迭代器也要实现remove
-
-<pre><code>
-    public int size() {
-        return entrySet().size();
-    }
-</code></pre>
     
     
     public boolean containsValue(Object value) {
@@ -70,11 +64,7 @@
     }
 使用迭代器遍历entrySet，寻找键与给定参数key相同的键值对，返回对应的值
 
-<pre><code>
-    public V put(K key, V value) {
-        throw new UnsupportedOperationException();
-    }
-</code></pre>
+
    
     public V remove(Object key) {
         Iterator<Entry<K,V>> i = entrySet().iterator();
@@ -102,17 +92,16 @@
     }
 遍历entrySet，寻找与给定参数key相同的键，如果找到，就调用迭代器的remove将该entry删除，返回对应的值，否则返回null
 
+    public V put(K key, V value) {
+        throw new UnsupportedOperationException();
+    }
+    
     public void putAll(Map<? extends K, ? extends V> m) {
         for (Map.Entry<? extends K, ? extends V> e : m.entrySet())
             put(e.getKey(), e.getValue());
     }
 迭代参数map，依次调用put方法
 
-<pre><code>
-    public void clear() {
-        entrySet().clear();
-    }
-</code></pre>
     
     transient Set<K>        keySet;
     transient Collection<V> values;
@@ -249,28 +238,6 @@
         return h;
     }
 返回map的哈希值，是所有entry的哈希值之和，确保m1.equals(m2)能推出m1.hashCode()==m2.hashCode()
-
-<pre><code>
-    public String toString() {
-        Iterator<Entry<K,V>> i = entrySet().iterator();
-        if (! i.hasNext())
-            return "{}";
-
-        StringBuilder sb = new StringBuilder();
-        sb.append('{');
-        for (;;) {
-            Entry<K,V> e = i.next();
-            K key = e.getKey();
-            V value = e.getValue();
-            sb.append(key   == this ? "(this Map)" : key);
-            sb.append('=');
-            sb.append(value == this ? "(this Map)" : value);
-            if (! i.hasNext())
-                return sb.append('}').toString();
-            sb.append(',').append(' ');
-        }
-    }
-</code></pre>
     
     protected Object clone() throws CloneNotSupportedException {
         AbstractMap<?,?> result = (AbstractMap<?,?>)super.clone();
@@ -524,5 +491,6 @@
         }
 
     }
+内部Entry类的实现
 
 

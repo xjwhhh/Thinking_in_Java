@@ -3,8 +3,8 @@
 ArrayList可以放入任何类型的元素
 ArrayList不是同步的
 
-<pre><code>
- /**
+
+    /**
      * Default initial capacity.
      */
     private static final int DEFAULT_CAPACITY = 10;
@@ -28,10 +28,10 @@ ArrayList不是同步的
      * will be expanded to DEFAULT_CAPACITY when the first element is added.
      */
     transient Object[] elementData; // non-private to simplify nested class access
-</code></pre>
+
 
 构造函数，如果传入的初始容量大于0，就构造一个数组，否则使用类里本来有的静态空数组
-<pre><code>
+
     public ArrayList(int initialCapacity) {
         if (initialCapacity > 0) {
             this.elementData = new Object[initialCapacity];
@@ -42,18 +42,18 @@ ArrayList不是同步的
                                                initialCapacity);
         }
     }
-</code></pre>
+
 
 使用另一个静态空数组
-<pre><code>
+
     public ArrayList() {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
-</code></pre>  
+  
 
 构造一个ArrayList，含有集合里的所有元素，顺序与集合迭代器返回的元素顺序相同
 如果集合为空，则直接使用静态空数组
-<pre><code>
+
     public ArrayList(Collection<? extends E> c) {
         elementData = c.toArray();
         if ((size = elementData.length) != 0) {
@@ -65,10 +65,10 @@ ArrayList不是同步的
             this.elementData = EMPTY_ELEMENTDATA;
         }
     }
-</code></pre>  
+  
 
 将列表的容量调整到与元素数量相同，可以用来最小化存储空间
-<pre><code>
+
     public void trimToSize() {
         modCount++;
         if (size < elementData.length) {
@@ -77,10 +77,10 @@ ArrayList不是同步的
               : Arrays.copyOf(elementData, size);
         }
     }
-</code></pre>  
+  
 
 增大列表容量
-<pre><code>
+
     public void ensureCapacity(int minCapacity) {
         int minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
             // any size if not default element table
@@ -109,7 +109,7 @@ ArrayList不是同步的
         if (minCapacity - elementData.length > 0)
             grow(minCapacity);
     }
-</code></pre>  
+  
 
 将新的容量变为原来容量的1.5倍。
 
@@ -120,7 +120,7 @@ ArrayList不是同步的
 2.得到的容量超过了规定的最大容量，进入hugeCapacity中，如果需要的容量小于0，抛出内存溢出异常，如果需要的容量比规定的最大容量大，那么最大容量只能是 Integer.MAX_VALUE。
 
 最后将elementData 通过Array的复制拷贝方法进行了扩容。
-<pre><code>
+
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
     /**
@@ -148,10 +148,10 @@ ArrayList不是同步的
             Integer.MAX_VALUE :
             MAX_ARRAY_SIZE;
     }
-</code></pre>  
+  
 
 返回一个原列表的浅拷贝，即没有拷贝元素
-<pre><code>
+
     public Object clone() {
         try {
             ArrayList<?> v = (ArrayList<?>) super.clone();
@@ -163,10 +163,10 @@ ArrayList不是同步的
             throw new InternalError(e);
         }
     }
-</code></pre>  
+  
 
 返回一个含有列表所有元素的数组
-<pre><code>
+
     public Object[] toArray() {
         return Arrays.copyOf(elementData, size);
     }
@@ -181,20 +181,19 @@ ArrayList不是同步的
             a[size] = null;
         return a;
     }
-</code></pre>  
+  
 
 调用ensureCapacityInternal(size + 1)
-<pre><code>
-   public boolean add(E e) {
+
+    public boolean add(E e) {
         ensureCapacityInternal(size + 1);  // Increments modCount!!
         elementData[size++] = e;
         return true;
     }
-</code></pre>  
 
 删除列表中第一个与参数元素相同的元素
-<pre><code>
-    public boolean remove(Object o) {
+     
+     public boolean remove(Object o) {
         if (o == null) {
             for (int index = 0; index < size; index++)
                 if (elementData[index] == null) {
@@ -210,12 +209,11 @@ ArrayList不是同步的
         }
         return false;
     }
-</code></pre>  
 
 用来删除的私有方法，跳过边界检查，也不返回删除的元素
 
 ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部分不变的元素实现的
-<pre><code>
+
     private void fastRemove(int index) {
         modCount++;
         int numMoved = size - index - 1;
@@ -224,7 +222,6 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
                              numMoved);
         elementData[--size] = null; // clear to let GC do its work
     }
-</code></pre>  
 
 根据参数complement决定是保存还是删除列表中与参数列表中相同的元素
 
@@ -234,7 +231,7 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
 
 现在回到finally的第一个if中，看条件(r != size)，似乎永远不会满足这个条件吧。上面的for循环一直r++啊，可是别忘了，c.contains(elementData[r])这句话是有可能抛出异常的，如果一旦类型不匹配，就会抛出异常 进入finally中。
 这个方法，如果没有删除任何数据，那么将会返回false。
-<pre><code>
+
     public boolean removeAll(Collection<?> c) {
         Objects.requireNonNull(c);
         return batchRemove(c, false);
@@ -273,7 +270,6 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
         }
         return modified;
     }
-</code></pre>  
 
 将列表写入输出流
 
@@ -323,7 +319,7 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
 
 
 迭代所有，每个元素都执行Consumer中定义的方法，可能会改变元素的值
-<pre><code>
+
     @Override
     public void forEach(Consumer<? super E> action) {
         Objects.requireNonNull(action);
@@ -338,11 +334,10 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
             throw new ConcurrentModificationException();
         }
     }
-</code></pre>
 
 删除符合过滤器要求的元素
-<pre><code>
- @Override
+
+    @Override
     public boolean removeIf(Predicate<? super E> filter) {
         Objects.requireNonNull(filter);
         // figure out which elements are to be removed
@@ -384,10 +379,9 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
 
         return anyToRemove;
     }
-</code></pre>
 
 替换所有元素，即对所有元素进行operator定义的操作
-<pre><code>
+
     @Override
     @SuppressWarnings("unchecked")
     public void replaceAll(UnaryOperator<E> operator) {
@@ -402,10 +396,9 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
         }
         modCount++;
     }
-</code></pre>
 
 排序
-<pre><code>
+
     @Override
     @SuppressWarnings("unchecked")
     public void sort(Comparator<? super E> c) {
@@ -416,7 +409,6 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
         }
         modCount++;
     }
-</code></pre>
 
 
 

@@ -9,8 +9,8 @@ HashMap对于顺序也不做保证
 相比于之前的版本，jdk1.8在解决哈希冲突时有了较大的变化，当数组总容量大于64且链表长度大于阈值（默认为8）时，将链表转化为红黑树，以减少搜索时间。原本Map.Entry接口的实现类Entry改名为了Node。转化为红黑树时改用另一种实现TreeNode。 
 
 有两个值影响HashMap的效率，initial capacity和load factor
-initial capacity是创建哈希表时的初始大侠
-load factor是确定哈希表达到多满时进行自动扩容
+initial capacity是创建哈希表时的初始大小
+load factor是决定哈希表达到多满时进行自动扩容
 
 HashMap的底层主要是基于数组和链表来实现的，它之所以有相当快的查询速度主要是因为它是通过计算散列码来决定存储的位置。HashMap中主要是通过key的hashCode来计算hash值的，只要hashCode相同，计算出来的hash值就一样。如果存储的对象对多了，就有可能不同的对象所算出来的hash值是相同的，这就出现了所谓的hash冲突。解决hash冲突的方法有很多，HashMap底层是通过链表来解决hash冲突的。
 
@@ -98,96 +98,94 @@ HashMap的底层主要是基于数组和链表来实现的，它之所以有相�
     }
 获得键与参数key相等的键值对的值
 
-<pre><code>
-final Node<K,V>[] resize() {
-    // 当前table保存
-    Node<K,V>[] oldTab = table;
-    // 保存table大小
-    int oldCap = (oldTab == null) ? 0 : oldTab.length;
-    // 保存当前阈值 
-    int oldThr = threshold;
-    int newCap, newThr = 0;
-    // 之前table大小大于0
-    if (oldCap > 0) {
-        // 之前table大于最大容量
-        if (oldCap >= MAXIMUM_CAPACITY) {
-            // 阈值为最大整形
-            threshold = Integer.MAX_VALUE;
-            return oldTab;
+    final Node<K,V>[] resize() {
+        // 当前table保存
+        Node<K,V>[] oldTab = table;
+        // 保存table大小
+        int oldCap = (oldTab == null) ? 0 : oldTab.length;
+        // 保存当前阈值 
+        int oldThr = threshold;
+        int newCap, newThr = 0;
+        // 之前table大小大于0
+        if (oldCap > 0) {
+            // 之前table大于最大容量
+            if (oldCap >= MAXIMUM_CAPACITY) {
+                // 阈值为最大整形
+                threshold = Integer.MAX_VALUE;
+                return oldTab;
+            }
+            // 容量翻倍，使用左移，效率更高
+            else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
+                oldCap >= DEFAULT_INITIAL_CAPACITY)
+                // 阈值翻倍
+                newThr = oldThr << 1; // double threshold
         }
-        // 容量翻倍，使用左移，效率更高
-        else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
-            oldCap >= DEFAULT_INITIAL_CAPACITY)
-            // 阈值翻倍
-            newThr = oldThr << 1; // double threshold
-    }
-    // 之前阈值大于0
-    else if (oldThr > 0)
-        newCap = oldThr;
-    // oldCap = 0并且oldThr = 0，使用缺省值（如使用HashMap()构造函数，之后再插入一个元素会调用resize函数，会进入这一步）
-    else {           
-        newCap = DEFAULT_INITIAL_CAPACITY;
-        newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
-    }
-    // 新阈值为0
-    if (newThr == 0) {
-        float ft = (float)newCap * loadFactor;
-        newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ?
-                  (int)ft : Integer.MAX_VALUE);
-    }
-    threshold = newThr;
-    @SuppressWarnings({"rawtypes","unchecked"})
-    // 初始化table
-    Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
-    table = newTab;
-    // 之前的table已经初始化过
-    if (oldTab != null) {
-        // 复制元素，重新进行hash
-        for (int j = 0; j < oldCap; ++j) {
-            Node<K,V> e;
-            if ((e = oldTab[j]) != null) {
-                oldTab[j] = null;
-                if (e.next == null)
-                    newTab[e.hash & (newCap - 1)] = e;
-                else if (e instanceof TreeNode)
-                    ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
-                else { // preserve order
-                    Node<K,V> loHead = null, loTail = null;
-                    Node<K,V> hiHead = null, hiTail = null;
-                    Node<K,V> next;
-                    // 将同一桶中的元素根据(e.hash & oldCap)是否为0进行分割，分成两个不同的链表，完成rehash
-                    do {
-                        next = e.next;
-                        if ((e.hash & oldCap) == 0) {
-                            if (loTail == null)
-                                loHead = e;
-                            else
-                                loTail.next = e;
-                            loTail = e;
+        // 之前阈值大于0
+        else if (oldThr > 0)
+            newCap = oldThr;
+        // oldCap = 0并且oldThr = 0，使用缺省值（如使用HashMap()构造函数，之后再插入一个元素会调用resize函数，会进入这一步）
+        else {           
+            newCap = DEFAULT_INITIAL_CAPACITY;
+            newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
+        }
+        // 新阈值为0
+        if (newThr == 0) {
+            float ft = (float)newCap * loadFactor;
+            newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ?
+                      (int)ft : Integer.MAX_VALUE);
+        }
+        threshold = newThr;
+        @SuppressWarnings({"rawtypes","unchecked"})
+        // 初始化table
+        Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+        table = newTab;
+        // 之前的table已经初始化过
+        if (oldTab != null) {
+            // 复制元素，重新进行hash
+            for (int j = 0; j < oldCap; ++j) {
+                Node<K,V> e;
+                if ((e = oldTab[j]) != null) {
+                    oldTab[j] = null;
+                    if (e.next == null)
+                        newTab[e.hash & (newCap - 1)] = e;
+                    else if (e instanceof TreeNode)
+                        ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
+                    else { // preserve order
+                        Node<K,V> loHead = null, loTail = null;
+                        Node<K,V> hiHead = null, hiTail = null;
+                        Node<K,V> next;
+                        // 将同一桶中的元素根据(e.hash & oldCap)是否为0进行分割，分成两个不同的链表，完成rehash
+                        do {
+                            next = e.next;
+                            if ((e.hash & oldCap) == 0) {
+                                if (loTail == null)
+                                    loHead = e;
+                                else
+                                    loTail.next = e;
+                                loTail = e;
+                            }
+                            else {
+                                if (hiTail == null)
+                                    hiHead = e;
+                                else
+                                    hiTail.next = e;
+                                hiTail = e;
+                            }
+                        } while ((e = next) != null);
+                        if (loTail != null) {
+                            loTail.next = null;
+                            newTab[j] = loHead;
                         }
-                        else {
-                            if (hiTail == null)
-                                hiHead = e;
-                            else
-                                hiTail.next = e;
-                            hiTail = e;
+                        if (hiTail != null) {
+                            hiTail.next = null;
+                            newTab[j + oldCap] = hiHead;
                         }
-                    } while ((e = next) != null);
-                    if (loTail != null) {
-                        loTail.next = null;
-                        newTab[j] = loHead;
-                    }
-                    if (hiTail != null) {
-                        hiTail.next = null;
-                        newTab[j + oldCap] = hiHead;
                     }
                 }
             }
         }
+        return newTab;
     }
-    return newTab;
-}
-</code></pre>
 进行扩容，会伴随着一次重新hash分配，并且会遍历hash表中所有的元素，是非常耗时的。在编写程序中，要尽量避免resize。
 
     public V put(K key, V value) {

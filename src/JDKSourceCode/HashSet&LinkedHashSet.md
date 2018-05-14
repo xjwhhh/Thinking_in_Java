@@ -6,7 +6,7 @@ HashSet类实现了Set。对于迭代器的顺序不做保证，并且不保证�
 
 HashSet不是同步的
 
-HashSet中由于只包含键，不包含值，由于在底层具体实现时，使用的HashMap或者是LinkedHashMap(可以指定构造函数来确定使用哪种结构)
+HashSet中只包含键，不包含值，在底层具体实现时，使用的HashMap或者是LinkedHashMap(可以指定构造函数来确定使用哪种结构)
 
 HashMap是键值对存储，所以为了适应HashMap存储，HashSet增加了一个PRESENT类域，所有的键都有同一个值（PRESENT）
 

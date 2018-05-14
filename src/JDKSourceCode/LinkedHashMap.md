@@ -10,7 +10,6 @@ LinkedHashMap具有可预知的迭代顺序，根据链表中元素的顺序可�
   
 默认是按插入顺序排序，如果指定按访问顺序排序，那么调用get方法后，会将这次访问的元素移至链表尾部，不断访问可以形成按访问顺序排序的链表。
 
-<pre><code>
     public LinkedHashMap(int initialCapacity, float loadFactor) {
         super(initialCapacity, loadFactor);
         accessOrder = false;
@@ -36,7 +35,6 @@ LinkedHashMap具有可预知的迭代顺序，根据链表中元素的顺序可�
         super();
         accessOrder = false;
     }
-</code></pre>
 
     public LinkedHashMap(Map<? extends K, ? extends V> m) {
         super();
@@ -107,15 +105,6 @@ LinkedHashMap并没有重写HashMap的put方法，而是重写了newNode，调�
 
 可以看到，除了新建一个结点之外，还把这个结点链接到双链表的末尾了，这个操作维护了插入顺序。
 
-<pre><code>
-    Node<K,V> replacementNode(Node<K,V> p, Node<K,V> next) {
-        LinkedHashMap.Entry<K,V> q = (LinkedHashMap.Entry<K,V>)p;
-        LinkedHashMap.Entry<K,V> t =
-            new LinkedHashMap.Entry<K,V>(q.hash, q.key, q.value, next);
-        transferLinks(q, t);
-        return t;
-    }
-</code></pre>
 
     TreeNode<K,V> newTreeNode(int hash, K key, V value, Node<K,V> next) {
         TreeNode<K,V> p = new TreeNode<K,V>(hash, key, value, next);
@@ -123,16 +112,6 @@ LinkedHashMap并没有重写HashMap的put方法，而是重写了newNode，调�
         return p;
     }
 当桶中结点类型为TreeNode时候，插入结点时调用的此函数，也会链接到末尾。
-
-<pre><code>
-    TreeNode<K,V> replacementTreeNode(Node<K,V> p, Node<K,V> next) {
-        LinkedHashMap.Entry<K,V> q = (LinkedHashMap.Entry<K,V>)p;
-        TreeNode<K,V> t = new TreeNode<K,V>(q.hash, q.key, q.value, next);
-        transferLinks(q, t);
-        return t;
-    }
-</code></pre>
-
 
     void afterNodeRemoval(Node<K,V> e) { // unlink
         LinkedHashMap.Entry<K,V> p =

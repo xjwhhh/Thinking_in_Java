@@ -5,7 +5,7 @@
 equals，比较set与参数object是否相等
 
 当且仅当参数object类型是set，两个set有相同长度，并且参数set的每个元素都存在于原set中
-<pre><code>    
+    
     public boolean equals(Object o) {
         if (o == this)
             return true;//首先判断是不是就是原set
@@ -22,12 +22,11 @@ equals，比较set与参数object是否相等
             return false;
         }
     }
-</code></pre>
 
 hashCode，返回set的哈希值
 
 set的哈希值是set中所有元素哈希值的总和，确保了对任意两个set:s1和s2，s1.equals(s2)就意味着s1.hashCode()==s2.hashCode()
-<pre><code>
+
     public int hashCode() {
         int h = 0;
         Iterator<E> i = iterator();
@@ -39,12 +38,11 @@ set的哈希值是set中所有元素哈希值的总和，确保了对任意两�
         }
         return h;
     }
-</code></pre>
 
 removeAll，从set中将参数集合中的所有元素删除
 
 首先判断set和参数集合谁的长度更大，如果set大，就用迭代器遍历集合，从set中删除集合中的元素；如果集合更大，就用迭代器遍历set，从中删除元素
-<pre><code>
+
     public boolean removeAll(Collection<?> c) {
         Objects.requireNonNull(c);
         boolean modified = false;
@@ -62,7 +60,6 @@ removeAll，从set中将参数集合中的所有元素删除
         }
         return modified;
     }
-</code></pre>
 
 
 
