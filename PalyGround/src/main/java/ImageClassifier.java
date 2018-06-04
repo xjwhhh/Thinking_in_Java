@@ -19,8 +19,10 @@ public class ImageClassifier {
 
         DefaultApi apiInstance = new DefaultApi();
         apiInstance.setApiClient(defaultClient);
-        File files = new File("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\PalyGround\\src\\main\\java\\test.png"); // File | The set of image files to be classified. Must be either one archive file containing image files,  or one or several image files.  Accepted file extensions:    * Archive file: zip tar gz tgz   * Image file: jpg jpe jpeg png gif bmp tif tiff
-        String options = "options_example"; // String | A ModelParameter object  in json format. Specification of the model Name and model Version to be used for  classification. This is for use with retrained models. Optional parameters:   * modelName - The model name that should be used for inference   * modelVersion - The model version that should be used for inference   Example: `{\"modelName\": \"model_ice\", \"modelVersion\": \"3\"}
+        File files = new File("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\PalyGround");
+        // File | The set of image files to be classified. Must be either one archive file containing image files,  or one or several image files.  Accepted file extensions:    * Archive file: zip tar gz tgz   * Image file: jpg jpe jpeg png gif bmp tif tiff
+        String options = "{\"modelName\": \"model_ice\", \"modelVersion\": \"3\"}";
+        // String | A ModelParameter object  in json format. Specification of the model Name and model Version to be used for  classification. This is for use with retrained models. Optional parameters:   * modelName - The model name that should be used for inference   * modelVersion - The model version that should be used for inference   Example: `{\"modelName\": \"model_ice\", \"modelVersion\": \"3\"}
         try {
             ResponseOk result = apiInstance.pOSTInferenceSync(files, options);
             System.out.println(result);

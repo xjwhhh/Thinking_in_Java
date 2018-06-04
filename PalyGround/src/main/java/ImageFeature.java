@@ -20,7 +20,8 @@ public class ImageFeature {
 
         InferenceSyncApi apiInstance = new InferenceSyncApi();
         apiInstance.setApiClient(defaultClient);
-        File files = new File("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\PalyGround\\src\\main\\java\\test.png"); // File | This parameter is required. <br>The list of file(s) to be uploaded. <br>Either one Archive file, one image file, or multiple image files are supported: <ul> <li>Archive file - <i>one file with the format ''*_/zip', '*_/tar.gz', or '*_/tar'</i></li> <li>Image files - <i>different image formats, such as .jpeg, .png, .tif, or .bmp </i></li> </ul> <ul> </ul>
+        File files = new File("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\PalyGround\\src\\main\\java\\test.png");
+        // File | This parameter is required. <br>The list of file(s) to be uploaded. <br>Either one Archive file, one image file, or multiple image files are supported: <ul> <li>Archive file - <i>one file with the format ''*_/zip', '*_/tar.gz', or '*_/tar'</i></li> <li>Image files - <i>different image formats, such as .jpeg, .png, .tif, or .bmp </i></li> </ul> <ul> </ul>
         try {
             Response result = apiInstance.inferenceSyncPost(files);
             System.out.println(result);
