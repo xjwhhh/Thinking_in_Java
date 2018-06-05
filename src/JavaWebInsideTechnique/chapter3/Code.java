@@ -1,6 +1,9 @@
 package JavaWebInsideTechnique.chapter3;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
 
 public class Code {
 
@@ -44,9 +47,24 @@ public class Code {
         String s="这是一段中文字符串";
         try {
             byte[] b = s.getBytes("UTF-8");
+            System.out.println(b);
             String n = new String(b, "UTF-8");
+            System.out.println(n);
         }catch (UnsupportedEncodingException e){
             e.printStackTrace();
         }
+
+        Charset charset=Charset.forName("UTF-8");
+        ByteBuffer byteBuffer=charset.encode(s);
+        System.out.println(byteBuffer);
+        CharBuffer charBuffer=charset.decode(byteBuffer);
+        System.out.println(charBuffer);
+
+        char c='1';
+        ByteBuffer heapByteBuffer=ByteBuffer.allocate(1024);
+        ByteBuffer byteBuffer1=heapByteBuffer.putChar(c);
+
     }
+
+
 }
