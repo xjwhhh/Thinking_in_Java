@@ -9,10 +9,10 @@ public class WaitNotify {
     static Object lock = new Object();
 
     public static void main(String[] args) throws Exception {
-        Thread waitThread=new Thread(new Wait(),"WaitThread");
+        Thread waitThread = new Thread(new Wait(), "WaitThread");
         waitThread.start();
         TimeUnit.SECONDS.sleep(1);
-        Thread notifyThread=new Thread(new Notify(),"NotifyThread");
+        Thread notifyThread = new Thread(new Notify(), "NotifyThread");
         notifyThread.start();
 
     }
@@ -52,7 +52,7 @@ public class WaitNotify {
 
             }
             //再次加锁
-            synchronized (lock){
+            synchronized (lock) {
                 System.out.println(Thread.currentThread() + " hold lock again. sleep @ "
                         + new SimpleDateFormat("HH:mm:ss").format(new Date()));
                 SleepUtils.second(5);
@@ -60,7 +60,5 @@ public class WaitNotify {
 
         }
     }
-
-
 
 }

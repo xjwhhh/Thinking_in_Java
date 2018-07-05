@@ -3,7 +3,7 @@ package concurrency;
 import java.util.concurrent.*;
 
 public class CreateThread {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //1.继承Thread
         Thread thread = new Thread() {
             @Override
@@ -38,6 +38,5 @@ public class CreateThread {
             e.printStackTrace();
         }
     }
-
 
 }

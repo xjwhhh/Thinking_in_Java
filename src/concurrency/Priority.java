@@ -8,35 +8,36 @@ import java.util.List;
  * 这表示程序正确性不能依赖线程的优先级高低
  */
 public class Priority {
-    private static volatile boolean notStart=true;
-    private static volatile boolean notEnd=true;
+    private static volatile boolean notStart = true;
+    private static volatile boolean notEnd = true;
 
-    public static void main(String[] args) throws Exception{
-        List<Job> jobs=new ArrayList<>();
-        for(int i=0;i<10;i++){
-            int priority=i<5?Thread.MIN_PRIORITY:Thread.MAX_PRIORITY;
-            Job job=new Job(priority);
+    public static void main(String[] args) throws Exception {
+        List<Job> jobs = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            int priority = i < 5 ? Thread.MIN_PRIORITY : Thread.MAX_PRIORITY;
+            Job job = new Job(priority);
             jobs.add(job);
-            Thread thread=new Thread(job,"Thread:"+i);
+            Thread thread = new Thread(job, "Thread:" + i);
             thread.setPriority(priority);
             thread.start();
         }
 
     }
 
-    static class Job implements Runnable{
+    static class Job implements Runnable {
         private int priority;
         private long jobCount;
-        public Job(int priority){
-            this.priority=priority;
+
+        public Job(int priority) {
+            this.priority = priority;
         }
 
         @Override
         public void run() {
-            while(notStart){
+            while (notStart) {
                 Thread.yield();
             }
-            while (notEnd){
+            while (notEnd) {
                 Thread.yield();
                 jobCount++;
             }
