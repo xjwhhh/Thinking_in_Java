@@ -9,7 +9,8 @@ import java.util.Map;
 
 @ThreadSafe
 public class MonitorVehicleTracker {
-    @GuardedBy("this") private final Map<String, MutablePoint> locations;
+    @GuardedBy("this")
+    private final Map<String, MutablePoint> locations;
 
     public MonitorVehicleTracker(Map<String, MutablePoint> locations) {
         this.locations = deepCopy(locations);
