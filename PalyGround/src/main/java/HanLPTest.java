@@ -1,7 +1,3 @@
-import com.hankcs.hanlp.HanLP;
-import org.apache.commons.lang.StringEscapeUtils;
-
-import java.util.List;
 
 public class HanLPTest {
     public static void main(String[] args) {
