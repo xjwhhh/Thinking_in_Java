@@ -11,16 +11,16 @@ public class ComputeSieve {
         BitSet b = new BitSet(n + 1);
         int i;
         //step2:将所有位置true;
-        for(i = 2; i <= n; i++){
+        for (i = 2; i <= n; i++) {
             b.set(i);
         }
 
         //step3:将已知素数的倍数所对应的位置false
         i = 2;
-        while(i * i <= n){
-            if(b.get(i)){
+        while (i * i <= n) {
+            if (b.get(i)) {
                 int k = 2 * i;
-                while(k <=n){
+                while (k <= n) {
                     b.clear(k);
                     k += i;
                 }
@@ -29,8 +29,8 @@ public class ComputeSieve {
         }
 
         i = 0;
-        while(i <= n){
-            if(b.get(i)){
+        while (i <= n) {
+            if (b.get(i)) {
                 System.out.println(i);
             }
             i++;

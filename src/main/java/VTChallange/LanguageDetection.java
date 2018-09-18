@@ -9,9 +9,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class LanguageDetection {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         DataOutputStream dataOut = null;
-        BufferedReader in =null;
+        BufferedReader in = null;
 
         try {
 
@@ -25,8 +25,8 @@ public class LanguageDetection {
             connection.setRequestMethod("POST");
 
             //adding headers
-            connection.setRequestProperty("Content-Type","application/json");
-            connection.setRequestProperty("Accept","application/json");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Accept", "application/json");
             //API Key for API Sandbox
             connection.setRequestProperty("APIKey", "KuOLPsQSA01teDWPT9xdHkWOrnMkEi1y");
 
@@ -56,10 +56,10 @@ public class LanguageDetection {
             e.printStackTrace();
         } finally {
             try {
-                if(dataOut != null) {
+                if (dataOut != null) {
                     dataOut.close();
                 }
-                if(in != null) {
+                if (in != null) {
                     in.close();
                 }
 

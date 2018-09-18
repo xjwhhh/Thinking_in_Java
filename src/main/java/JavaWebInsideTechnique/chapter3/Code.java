@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 
 public class Code {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         memoryCode();
     }
 
@@ -19,9 +19,9 @@ public class Code {
             OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream, charset);
             writer.write("这是要保存的中文字符");
             writer.close();
-        } catch (FileNotFoundException|UnsupportedEncodingException e) {
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -36,33 +36,33 @@ public class Code {
             }
             System.out.println(buffer);
             reader.close();
-        } catch (FileNotFoundException|UnsupportedEncodingException e) {
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void memoryCode(){
-        String s="这是一段中文字符串";
+    public static void memoryCode() {
+        String s = "这是一段中文字符串";
         try {
             byte[] b = s.getBytes("UTF-8");
             System.out.println(b);
             String n = new String(b, "UTF-8");
             System.out.println(n);
-        }catch (UnsupportedEncodingException e){
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        Charset charset=Charset.forName("UTF-8");
-        ByteBuffer byteBuffer=charset.encode(s);
+        Charset charset = Charset.forName("UTF-8");
+        ByteBuffer byteBuffer = charset.encode(s);
         System.out.println(byteBuffer);
-        CharBuffer charBuffer=charset.decode(byteBuffer);
+        CharBuffer charBuffer = charset.decode(byteBuffer);
         System.out.println(charBuffer);
 
-        char c='1';
-        ByteBuffer heapByteBuffer=ByteBuffer.allocate(1024);
-        ByteBuffer byteBuffer1=heapByteBuffer.putChar(c);
+        char c = '1';
+        ByteBuffer heapByteBuffer = ByteBuffer.allocate(1024);
+        ByteBuffer byteBuffer1 = heapByteBuffer.putChar(c);
 
     }
 

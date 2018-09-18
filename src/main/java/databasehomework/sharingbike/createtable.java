@@ -47,8 +47,7 @@ public class createtable {
             } else {
                 System.out.println("创建用户表失败");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -66,8 +65,7 @@ public class createtable {
             } else {
                 System.out.println("创建单车表失败");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -85,8 +83,7 @@ public class createtable {
             } else {
                 System.out.println("创建借车记录表失败");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -104,8 +101,7 @@ public class createtable {
             } else {
                 System.out.println("创建借车记录表失败");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -123,8 +119,7 @@ public class createtable {
             } else {
                 System.out.println("创建维修表失败");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -143,8 +138,7 @@ public class createtable {
             } else {
                 System.out.println("创建地点表失败");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

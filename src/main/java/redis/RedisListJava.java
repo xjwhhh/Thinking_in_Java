@@ -1,6 +1,7 @@
 package redis;
 
 import java.util.List;
+
 import redis.clients.jedis.Jedis;
 
 public class RedisListJava {
@@ -13,9 +14,9 @@ public class RedisListJava {
         jedis.lpush("site-list", "Google");
         jedis.lpush("site-list", "Taobao");
         // 获取存储的数据并输出
-        List<String> list = jedis.lrange("site-list", 0 ,2);
-        for(int i=0; i<list.size(); i++) {
-            System.out.println("列表项为: "+list.get(i));
+        List<String> list = jedis.lrange("site-list", 0, 2);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println("列表项为: " + list.get(i));
         }
     }
 }

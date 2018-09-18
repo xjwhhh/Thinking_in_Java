@@ -30,7 +30,7 @@ public class insert_dormitory {
             PreparedStatement stmt = con.prepareStatement(sqlstr);
             Date start = new Date();
 
-            HashMap<String, Dormitory> dormitoryHashMap = new HashMap<String,Dormitory>();
+            HashMap<String, Dormitory> dormitoryHashMap = new HashMap<String, Dormitory>();
             //读取excel文件
             FileInputStream excelFileInputStream = new FileInputStream("C:\\Users\\xjwhh\\Desktop\\哈哈哈\\数据库\\作业\\作业2\\修改后的数据\\分配方案.xls");
             HSSFWorkbook workbook = new HSSFWorkbook(excelFileInputStream);

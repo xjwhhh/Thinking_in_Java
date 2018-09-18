@@ -44,7 +44,7 @@
         boolean removed = false;
         final Iterator<E> each = iterator();
         while (each.hasNext()) {
-            if (filter.test(each.next())) {
+            if (filter.p12(each.next())) {
                 each.remove();
                 removed = true;
             }

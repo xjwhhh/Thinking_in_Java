@@ -107,14 +107,14 @@ public class insertdata {
             line = br.readLine();
             String[] info = line.split(";");
             String zero = info[0].substring(1);
-            sql.append("("+zero+",'"+info[1]+"','"+info[2]+"','"+info[3]+"','"+info[4]+"','"+info[5]+"'),");
+            sql.append("(" + zero + ",'" + info[1] + "','" + info[2] + "','" + info[3] + "','" + info[4] + "','" + info[5] + "'),");
             sql.deleteCharAt(sql.length() - 1);
-            Statement stmt=con.createStatement();
+            Statement stmt = con.createStatement();
             stmt.addBatch(sql.toString());
             stmt.executeBatch();
             sql = new StringBuffer();
             sql.append("insert into record (user_id,bike_id,borrow_address,borrow_time,return_address,return_time) values");
-            int count=0;
+            int count = 0;
 
             while (line != null) {
                 if (count < 10000) {
@@ -124,8 +124,7 @@ public class insertdata {
                         sql.append("(" + info[0] + ",'" + info[1] + "','" + info[2] + "','" + info[3] + "','" + info[4] + "','" + info[5] + "'),");
                     }
                     count++;
-                }
-                else{
+                } else {
                     sql.deleteCharAt(sql.length() - 1);
                     stmt.addBatch(sql.toString());
                     stmt.executeBatch();
@@ -144,7 +143,7 @@ public class insertdata {
         System.out.println("插入借车记录表运行时间:" + String.valueOf(end.getTime() - start.getTime()) + "ms");
     }
 
-    public static void updateCost(){
+    public static void updateCost() {
         try {
             Statement stmt = con.createStatement();
             Date start = new Date();
@@ -169,7 +168,7 @@ public class insertdata {
     }
 
     public static void insertAddress() {
-        HashSet<String> addresses=new HashSet<String>();
+        HashSet<String> addresses = new HashSet<String>();
         String sqlstr = "insert into address (name) values(?)";
         Date start = new Date();
         try {
@@ -183,13 +182,13 @@ public class insertdata {
             while (line != null) {
                 line = br.readLine();
                 if (line != null) {
-                    String[]info = line.split(";");
+                    String[] info = line.split(";");
                     addresses.add(info[2]);
                     addresses.add(info[4]);
                 }
             }
-            for(String s:addresses){
-                stmt.setString(1,s);
+            for (String s : addresses) {
+                stmt.setString(1, s);
                 stmt.addBatch();
             }
             stmt.executeBatch();

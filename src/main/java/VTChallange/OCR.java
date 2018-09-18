@@ -1,10 +1,12 @@
 package VTChallange;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 public class OCR {
 
-    public static DataOutputStream readFileByBytes(String fileName, DataOutputStream outputStream)  {
+    public static DataOutputStream readFileByBytes(String fileName, DataOutputStream outputStream) {
         try {
             DataInputStream in = new DataInputStream(new FileInputStream(
                     fileName));
@@ -14,15 +16,15 @@ public class OCR {
             while ((bytes = in.read(bufferOut)) != -1) {
                 outputStream.write(bufferOut, 0, bytes);
             }
-        }catch (IOException e ){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return outputStream;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         DataOutputStream dataOut = null;
-        BufferedReader in =null;
+        BufferedReader in = null;
 
         try {
 
@@ -36,10 +38,10 @@ public class OCR {
             connection.setRequestMethod("POST");
 
             //adding headers
-            connection.setRequestProperty("content-type","multipart/form-data; boundary=---011000010111000001101001");
-            connection.setRequestProperty("Accept","application/json");
+            connection.setRequestProperty("content-type", "multipart/form-data; boundary=---011000010111000001101001");
+            connection.setRequestProperty("Accept", "application/json");
             //API Key for API Sandbox
-            connection.setRequestProperty("APIKey","KuOLPsQSA01teDWPT9xdHkWOrnMkEi1y");
+            connection.setRequestProperty("APIKey", "KuOLPsQSA01teDWPT9xdHkWOrnMkEi1y");
 
 
             connection.setDoInput(true);
@@ -47,9 +49,9 @@ public class OCR {
             //sending POST request
             connection.setDoOutput(true);
             dataOut = new DataOutputStream(connection.getOutputStream());
-            dataOut.writeBytes("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"files\"; filename=\"C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png\"\r\nContent-Type: image/png\r\n\r\n");
-            dataOut=readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png",dataOut);
-            dataOut.writeBytes("\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"options\"\r\n\r\n"+"{\"lang\": \"en,de\", \"output_type\": \"txt\", \"page_seg_mode\": \"1\", \"model_type\": \"lstm_standard\"} "+"\r\n-----011000010111000001101001--");
+            dataOut.writeBytes("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"files\"; filename=\"C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\p12.png\"\r\nContent-Type: image/png\r\n\r\n");
+            dataOut = readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\p12.png", dataOut);
+            dataOut.writeBytes("\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"options\"\r\n\r\n" + "{\"lang\": \"en,de\", \"output_type\": \"txt\", \"page_seg_mode\": \"1\", \"model_type\": \"lstm_standard\"} " + "\r\n-----011000010111000001101001--");
             dataOut.flush();
 
             int responseCode = connection.getResponseCode();
@@ -68,10 +70,10 @@ public class OCR {
             e.printStackTrace();
         } finally {
             try {
-                if(dataOut != null) {
+                if (dataOut != null) {
                     dataOut.close();
                 }
-                if(in != null) {
+                if (in != null) {
                     in.close();
                 }
 

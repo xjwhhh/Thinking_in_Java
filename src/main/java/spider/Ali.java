@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class Ali {
 
-    private static HashMap<String, Recruitment> stringRecruitmentHashMap = new HashMap<String,Recruitment>();
+    private static HashMap<String, Recruitment> stringRecruitmentHashMap = new HashMap<String, Recruitment>();
 
     private void getJobLinks() {
 

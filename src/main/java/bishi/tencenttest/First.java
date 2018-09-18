@@ -9,7 +9,7 @@ public class First {
         long m = 0;
         n = in.nextLong();
         m = in.nextLong();
-        System.out.println(m*n/2);
+        System.out.println(m * n / 2);
 
     }
 }

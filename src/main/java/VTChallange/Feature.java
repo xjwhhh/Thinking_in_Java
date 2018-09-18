@@ -1,4 +1,5 @@
 package VTChallange;
+
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
@@ -6,11 +7,11 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 public class Feature {
 
 
-
-    public static DataOutputStream readFileByBytes(String fileName, DataOutputStream outputStream)  {
+    public static DataOutputStream readFileByBytes(String fileName, DataOutputStream outputStream) {
         try {
             DataInputStream in = new DataInputStream(new FileInputStream(
                     fileName));
@@ -20,15 +21,15 @@ public class Feature {
             while ((bytes = in.read(bufferOut)) != -1) {
                 outputStream.write(bufferOut, 0, bytes);
             }
-        }catch (IOException e ){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return outputStream;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         DataOutputStream dataOut = null;
-        BufferedReader in =null;
+        BufferedReader in = null;
 
         try {
 
@@ -42,10 +43,10 @@ public class Feature {
             connection.setRequestMethod("POST");
 
             //adding headers
-            connection.setRequestProperty("Content-Type","multipart/form-data; boundary=---011000010111000001101001");
-            connection.setRequestProperty("Accept","application/json");
+            connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=---011000010111000001101001");
+            connection.setRequestProperty("Accept", "application/json");
             //API Key for API Sandbox
-            connection.setRequestProperty("APIKey","GLnnEt6i25UHue0Uxx35GNybe0eHU5vB");
+            connection.setRequestProperty("APIKey", "GLnnEt6i25UHue0Uxx35GNybe0eHU5vB");
 
 
             connection.setDoInput(true);
@@ -58,8 +59,8 @@ public class Feature {
 
 //            String content=getImageBinary();
             dataOut = new DataOutputStream(connection.getOutputStream());
-            dataOut.writeBytes("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"files\"; filename=\"C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png\"\r\nContent-Type: image/png\r\n\r\n");
-            dataOut=readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png",dataOut);
+            dataOut.writeBytes("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"files\"; filename=\"C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\p12.png\"\r\nContent-Type: image/png\r\n\r\n");
+            dataOut = readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\p12.png", dataOut);
             dataOut.writeBytes("\r\n-----011000010111000001101001--");
             dataOut.flush();
 
@@ -79,10 +80,10 @@ public class Feature {
             e.printStackTrace();
         } finally {
             try {
-                if(dataOut != null) {
+                if (dataOut != null) {
                     dataOut.close();
                 }
-                if(in != null) {
+                if (in != null) {
                     in.close();
                 }
 

@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class updateRepair {
     static Connection con;
+
     public static void main(String[] args) {
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/homework";
@@ -22,7 +23,7 @@ public class updateRepair {
             Statement stmt = con.createStatement();
             Date start = new Date();
             String str2 = "DROP EVENT IF EXISTS updateRepair;";
-            String str3="CREATE DEFINER =`root`@`localhost` EVENT updateRepair\n" +
+            String str3 = "CREATE DEFINER =`root`@`localhost` EVENT updateRepair\n" +
                     " ON SCHEDULE EVERY 1 MONTH STARTS '2017-11-01 00:00:00'\n" +
                     " ON COMPLETION PRESERVE ENABLE DO\n" +
                     "\n" +
@@ -52,7 +53,7 @@ public class updateRepair {
             stmt.executeBatch();
             Date end = new Date();
             System.out.println("运行时间:" + String.valueOf(end.getTime() - start.getTime()) + "ms");
-        }catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();

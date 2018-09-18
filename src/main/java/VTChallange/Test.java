@@ -10,7 +10,7 @@ public class Test {
     static BASE64Encoder encoder = new sun.misc.BASE64Encoder();
 
     static String getImageBinary() {
-        File f = new File("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png");
+        File f = new File("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\p12.png");
         BufferedImage bi;
         try {
             bi = ImageIO.read(f);
@@ -25,7 +25,7 @@ public class Test {
         return null;
     }
 
-    public static void readFileByBytes(String fileName)  {
+    public static void readFileByBytes(String fileName) {
         try {
             DataInputStream in = new DataInputStream(new FileInputStream(
                     fileName));
@@ -35,12 +35,12 @@ public class Test {
             while ((bytes = in.read(bufferOut)) != -1) {
                 System.out.write(bufferOut, 0, bytes);
             }
-        }catch (IOException e ){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png");
+        readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\p12.png");
     }
 }

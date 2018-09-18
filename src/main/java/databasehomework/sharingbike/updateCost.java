@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class updateCost {
     static Connection con;
+
     public static void main(String[] args) {
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/homework";
@@ -33,7 +34,7 @@ public class updateCost {
             stmt.executeBatch();
             Date end = new Date();
             System.out.println("运行时间:" + String.valueOf(end.getTime() - start.getTime()) + "ms");
-        }catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();

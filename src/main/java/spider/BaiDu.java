@@ -18,7 +18,7 @@ import java.util.HashMap;
 
 public class BaiDu {
 
-    private static HashMap<String, Recruitment> stringRecruitmentHashMap = new HashMap<String,Recruitment>();
+    private static HashMap<String, Recruitment> stringRecruitmentHashMap = new HashMap<String, Recruitment>();
 
     private void getJobLinks() {
 
@@ -31,9 +31,9 @@ public class BaiDu {
 
             for (Element listRow : listRows) {
                 System.out.println(listRow);
-                Element jobLink=listRow.selectFirst("a");
+                Element jobLink = listRow.selectFirst("a");
                 System.out.println(jobLink.attr("href"));
-                stringRecruitmentHashMap.put(jobLink.attr("href"),new Recruitment());
+                stringRecruitmentHashMap.put(jobLink.attr("href"), new Recruitment());
             }
 
         } catch (IOException e) {
@@ -43,11 +43,11 @@ public class BaiDu {
 
     }
 
-    private void getContents(){
+    private void getContents() {
 
     }
 
-    public  String sendPost() {
+    public String sendPost() {
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";
@@ -80,20 +80,19 @@ public class BaiDu {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("发送 POST 请求出现异常！"+e);
+            System.out.println("发送 POST 请求出现异常！" + e);
             e.printStackTrace();
         }
         //使用finally块来关闭输出流、输入流
-        finally{
-            try{
-                if(out!=null){
+        finally {
+            try {
+                if (out != null) {
                     out.close();
                 }
-                if(in!=null){
+                if (in != null) {
                     in.close();
                 }
-            }
-            catch(IOException ex){
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
@@ -101,39 +100,38 @@ public class BaiDu {
         return result;
     }
 
-    private void parseJson(String jsonString){
-        jsonString=jsonString.replaceAll("\\\\r<br>","");
+    private void parseJson(String jsonString) {
+        jsonString = jsonString.replaceAll("\\\\r<br>", "");
 //        jsonString=jsonString.replaceAll("","");
 //        System.out.println(jsonString);
-        JSONObject jsonObject=JSONObject.fromObject(jsonString);
+        JSONObject jsonObject = JSONObject.fromObject(jsonString);
 //        System.out.println(jsonObject.getJSONArray("postList"));
-                JSONArray jsonArray = jsonObject.getJSONArray("postList");
-                for(int i=0;i<jsonArray.size();i++){
+        JSONArray jsonArray = jsonObject.getJSONArray("postList");
+        for (int i = 0; i < jsonArray.size(); i++) {
 //                    System.out.println(jsonArray.get(i));
-                    JSONObject job=(JSONObject) jsonArray.get(i);
-                    Recruitment recruitment=new Recruitment();
-                    recruitment.setJobName(job.getString("name"));
-                    recruitment.setPublishDate(job.getString("publishDate"));
-                    recruitment.setJobType(job.getString("postType"));
-                    recruitment.setWorkAddress(job.getString("workPlace"));
-                    recruitment.setJobDescription(job.getString("serviceCondition"));
+            JSONObject job = (JSONObject) jsonArray.get(i);
+            Recruitment recruitment = new Recruitment();
+            recruitment.setJobName(job.getString("name"));
+            recruitment.setPublishDate(job.getString("publishDate"));
+            recruitment.setJobType(job.getString("postType"));
+            recruitment.setWorkAddress(job.getString("workPlace"));
+            recruitment.setJobDescription(job.getString("serviceCondition"));
 //                    System.out.println(job.getString("serviceCondition"));
-                    recruitment.setJobRequirement(job.getString("workContent"));
+            recruitment.setJobRequirement(job.getString("workContent"));
 
-                    stringRecruitmentHashMap.put(job.getString("postId"),recruitment);
+            stringRecruitmentHashMap.put(job.getString("postId"), recruitment);
 //                    System.out.println(job.getString("postId"));
 
 
-                }
+        }
     }
 
 
-
-    public static void main(String[] args){
-        BaiDu baiDu=new BaiDu();
+    public static void main(String[] args) {
+        BaiDu baiDu = new BaiDu();
 
         baiDu.getContents();
-        String jsonString=baiDu.sendPost();
+        String jsonString = baiDu.sendPost();
         baiDu.parseJson(jsonString);
         for (String jobLink : stringRecruitmentHashMap.keySet()) {
             Recruitment recruitment = stringRecruitmentHashMap.get(jobLink);

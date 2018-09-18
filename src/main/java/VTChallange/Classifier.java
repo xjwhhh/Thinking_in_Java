@@ -8,8 +8,7 @@ import java.net.URL;
 public class Classifier {
 
 
-
-    public static DataOutputStream readFileByBytes(String fileName, DataOutputStream outputStream)  {
+    public static DataOutputStream readFileByBytes(String fileName, DataOutputStream outputStream) {
         try {
             DataInputStream in = new DataInputStream(new FileInputStream(
                     fileName));
@@ -19,7 +18,7 @@ public class Classifier {
             while ((bytes = in.read(bufferOut)) != -1) {
                 outputStream.write(bufferOut, 0, bytes);
             }
-        }catch (IOException e ){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return outputStream;
@@ -53,8 +52,8 @@ public class Classifier {
             // Optional Multipart/Form-data parameters: "options"
             // For more details, see the API definition
             dataOut = new DataOutputStream(connection.getOutputStream());
-            dataOut.writeBytes("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"files\"; filename=\"C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png\"\r\nContent-Type: image/png\r\n\r\n");
-            dataOut=readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\test.png",dataOut);
+            dataOut.writeBytes("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"files\"; filename=\"C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\p12.png\"\r\nContent-Type: image/png\r\n\r\n");
+            dataOut = readFileByBytes("C:\\Users\\xjwhh\\IdeaProjects_Ultimate\\Thinking_in_Java\\src\\VTChallange\\p12.png", dataOut);
             dataOut.writeBytes("\r\n-----011000010111000001101001--");
             dataOut.flush();
 

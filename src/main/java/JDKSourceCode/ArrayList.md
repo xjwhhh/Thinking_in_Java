@@ -350,7 +350,7 @@ ArrayList对列表的结构性修改，都是调用System.arrayCopy拷贝一部�
         for (int i=0; modCount == expectedModCount && i < size; i++) {
             @SuppressWarnings("unchecked")
             final E element = (E) elementData[i];
-            if (filter.test(element)) {
+            if (filter.p12(element)) {
                 removeSet.set(i);
                 removeCount++;
             }

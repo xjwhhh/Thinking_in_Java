@@ -10,6 +10,6 @@ public class RedisStringJava {
         //设置 redis 字符串数据
         jedis.set("strkey", "https://github.com/xjwhhh");
         // 获取存储的数据并输出
-        System.out.println("redis 存储的字符串为: "+ jedis.get("strkey"));
+        System.out.println("redis 存储的字符串为: " + jedis.get("strkey"));
     }
 }

@@ -22,18 +22,18 @@ public class First {
 //        System.out.println(num);
 //    }
 
-    public static void main(String[] args){
-        int n=5;
-        int k=2;
-        int num=0;
-        for(int y=1;y<=n;y++){
-            int temp=0;
-            for(int x=k;x<=n;x++){
-                if(x%y>=k){
-                    temp=x;
+    public static void main(String[] args) {
+        int n = 5;
+        int k = 2;
+        int num = 0;
+        for (int y = 1; y <= n; y++) {
+            int temp = 0;
+            for (int x = k; x <= n; x++) {
+                if (x % y >= k) {
+                    temp = x;
                     System.out.println(temp);
-                    num+=(y-temp)*(n/y);
-                    num+=Math.max(n%y-temp+1,0);
+                    num += (y - temp) * (n / y);
+                    num += Math.max(n % y - temp + 1, 0);
                     System.out.println(num);
 
                     break;

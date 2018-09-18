@@ -5,7 +5,8 @@ import net.jcip.annotations.ThreadSafe;
 
 @ThreadSafe
 public class SimulatedCAS {
-    @GuardedBy("this") private int value;
+    @GuardedBy("this")
+    private int value;
 
     public synchronized int get() {
         return value;

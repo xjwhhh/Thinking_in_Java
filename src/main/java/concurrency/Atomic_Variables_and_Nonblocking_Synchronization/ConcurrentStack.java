@@ -5,7 +5,7 @@ import net.jcip.annotations.ThreadSafe;
 import java.util.concurrent.atomic.AtomicReference;
 
 @ThreadSafe
-public class ConcurrentStack <E> {
+public class ConcurrentStack<E> {
     AtomicReference<Node<E>> top = new AtomicReference<Node<E>>();
 
     public void push(E item) {
@@ -29,7 +29,7 @@ public class ConcurrentStack <E> {
         return oldHead.item;
     }
 
-    private static class Node <E> {
+    private static class Node<E> {
         public final E item;
         public Node<E> next;
 

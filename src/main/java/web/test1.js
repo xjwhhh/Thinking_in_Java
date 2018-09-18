@@ -1,5 +1,5 @@
-var name="1"
-var object= {
+var name = "1"
+var object = {
     name: "2",
     getName: function () {
         alert(this.name);
@@ -10,8 +10,8 @@ var object= {
     }
 };
 object2 = {
-    name:"we",
-    getName:function(){
+    name: "we",
+    getName: function () {
         alert(object.getName()())
     }
 };

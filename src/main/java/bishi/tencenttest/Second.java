@@ -24,7 +24,7 @@ public class Second {
 //            System.out.println(2);
             result = (allocate(K, B, A, Y, X));
         }
-        System.out.println(result%1000000007);
+        System.out.println(result % 1000000007);
 
     }
 
