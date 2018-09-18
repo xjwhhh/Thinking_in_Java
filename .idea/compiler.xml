@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="PalyGround" />
+        <module name="Thinking_in_Java" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PalyGround" target="1.5" />
+      <module name="PalyGround" target="8" />
+      <module name="Thinking_in_Java" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

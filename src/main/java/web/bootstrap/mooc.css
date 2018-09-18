@@ -1,0 +1,21 @@
+textarea#inputCodeTextArea{
+    resize: none;
+    width: 100%;
+    height:300px;
+    overflow-y:auto;
+}
+
+p#questionInfoArea1{
+    resize: none;
+    width: 100%;
+    height:100px;
+    overflow-y:auto;
+}
+
+p#questionInfoArea2{
+    resize: none;
+    width: 100%;
+    height:100px;
+    overflow-y:auto;
+}
+
