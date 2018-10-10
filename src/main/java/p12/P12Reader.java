@@ -12,7 +12,7 @@ import java.util.Enumeration;
 
 public class P12Reader {
     public static void main(String[] args) {
-        final String KEYSTORE_FILE = "C:\\Users\\i343740\\Desktop\\Incident\\GBQ\\saphanadspaloalto-be61504e70e6.p12";
+        final String KEYSTORE_FILE = "C:\\Users\\i343740\\Desktop\\test1.p12";
         final String KEYSTORE_PASSWORD = "notasecret";
         final String KEYSTORE_ALIAS = "alias";
 
